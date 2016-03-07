@@ -1,0 +1,24 @@
+{
+  "name": "Leetcode Eye Patch",
+  "description": "Hides away Leetcode's Difficulty and Acceptance Rate columns.",
+  "version": "0.1",
+  "background": {
+    "scripts": ["jquery.js", "background.js"]
+  },
+  "permissions": [
+    "tabs", "http://leetcode.com/*", "https://leetcode.com/*"
+  ],
+  "browser_action": {
+      "default_title": "Leetcode Eye Patch",
+      "default_icon": "icon16.png"
+  },
+  "icons": { "16": "icon16.png",
+           "48": "icon48.png" },
+  "content_scripts": [
+    {
+      "matches": ["http://leetcode.com/*","https://leetcode.com/*"],
+      "js": ["jquery.js", "background.js"]
+    }
+  ],
+  "manifest_version": 2
+}
