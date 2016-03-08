@@ -12,7 +12,7 @@ function save_options() {
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({
-    hideLocked: true
+    hideLocked: false
   }, function(items) {
     document.getElementById('hide-locked').checked = items.hideLocked;
   });
