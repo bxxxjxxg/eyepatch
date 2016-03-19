@@ -1,7 +1,7 @@
 {
   "name": "Leetcode Eye Patch",
   "description": "Hides away Leetcode's Difficulty and Acceptance Rate columns.",
-  "version": "0.2",
+  "version": "0.4",
   "background": {
     "scripts": ["jquery.js", "jquery-watch.min.js", "background.js"]
   },
