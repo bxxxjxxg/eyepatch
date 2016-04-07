@@ -6,7 +6,7 @@ $(document).ready(function () {
 	$('.header-level').hide();
 
 	$("#problemList td:nth-child(4)").hide();
-	$("#problemList td:nth-child(5)").hide();
+	$("#problemList td:nth-child(6)").hide();
 	$("#question_list th:nth-child(4)").text("");
 	$("#question_list th:nth-child(5)").text("");
 	$("#question_list td:nth-child(4)").text("");
@@ -22,14 +22,14 @@ $(document).ready(function () {
 		properties: "prop_innerHTML",
     	watchChildren: true,
     	callback: function (data, i) {
-    		var count = (data.vals[i].match(/Accepted/g) || []).length;
-    		// alert(count);
-        	if (count >= 1) {
+    		var count = (data.vals[i].match(/class="ng-binding text-success"/g) || []).length;
+    		// alert(data.vals[i]);
+        	if (count >= 0) {
         		// alert("hey");
         		$("#result-state").css('display','inline-block');
         		
         	}
-        	if (count == 2) {
+        	if (count == 1) {
         		$('.total-submit').insertAfter($("#result-state").parent());
 				$('.total-submit').show();
         		$('.total-ac').insertAfter($("#result-state").parent());
