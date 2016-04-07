@@ -16,7 +16,6 @@ $(document).ready(function () {
 	$('.total-submit').hide();
 
 	var info = $('.total-ac').text() + $('.total-submit').text();
-	console.log(info);
 
 	$("#result").watch({
 		properties: "prop_innerHTML",
@@ -40,7 +39,7 @@ $(document).ready(function () {
 
 	chrome.storage.sync.get('hideLocked', function(response) {
 		if (response.hideLocked)
-			$('tr i').parent().parent().remove();
+			$('tr i.fa.fa-lock').parent().parent().remove();
 	});
 
 
