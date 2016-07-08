@@ -2,37 +2,32 @@
 $(document).ready(function () {
    
 	$('.header-ac').hide();
-
 	$('.header-level').hide();
 
 	$("#problemList td:nth-child(4)").hide();
-	$("#problemList td:nth-child(6)").hide();
+	$("#problemList td:nth-child(7)").hide();
 	$("#question_list th:nth-child(4)").text("");
 	$("#question_list th:nth-child(5)").text("");
 	$("#question_list td:nth-child(4)").text("");
 	$("#question_list td:nth-child(5)").text("");
 	
-	$('.total-ac').hide();
-	$('.total-submit').hide();
+	var info = $('.question-info.text-info');
 
-	var info = $('.total-ac').text() + $('.total-submit').text();
+	info.hide();
+
 
 	$("#result").watch({
 		properties: "prop_innerHTML",
     	watchChildren: true,
     	callback: function (data, i) {
     		var count = (data.vals[i].match(/class="ng-binding text-success"/g) || []).length;
-    		// alert(data.vals[i]);
         	if (count >= 0) {
-        		// alert("hey");
         		$("#result-state").css('display','inline-block');
         		
         	}
         	if (count == 1) {
-        		$('.total-submit').insertAfter($("#result-state").parent());
-				$('.total-submit').show();
-        		$('.total-ac').insertAfter($("#result-state").parent());
-        		$('.total-ac').show();
+        		info.insertAfter($("#result-state").parent());
+        		info.show();
         	}
     	}
 	});
