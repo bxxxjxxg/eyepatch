@@ -14,16 +14,6 @@ $(document).ready(function () {
 	// Hide question stats while on the problem's page
 	$('.question-info').hide();
    
-   	// @TODO is this depricated?
-	$('.header-ac').hide();
-	$('.header-level').hide();
-	$("#problemList td:nth-child(4)").hide();
-	$("#problemList td:nth-child(7)").hide();
-	$("#question_list th:nth-child(4)").text("");
-	$("#question_list th:nth-child(5)").text("");
-	$("#question_list td:nth-child(4)").text("");
-	$("#question_list td:nth-child(5)").text("");
-	
 	var info = $('.question-info.text-info');
 
 	info.hide();
