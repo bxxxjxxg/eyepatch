@@ -10,6 +10,9 @@ $(document).ready(function () {
 	$('tbody.reactable-data td:nth-child(6)').each((index, obj) => {
   		$(obj).css('opacity', '0');
 	});
+	
+	// Hide question stats while on the problem's page
+	$('.question-info').hide();
    
    	// @TODO is this depricated?
 	$('.header-ac').hide();
