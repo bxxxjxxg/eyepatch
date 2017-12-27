@@ -6,7 +6,7 @@
     "scripts": ["jquery.js", "jquery-watch.min.js", "background.js"]
   },
   "permissions": [
-    "tabs", "http://leetcode.com/*", "https://leetcode.com/*"
+    "tabs", "http://leetcode.com/problemset/*","https://leetcode.com/problemset/*","http://leetcode.com/problems/*","https://leetcode.com/problems/*"
   ],
   "browser_action": {
       "default_title": "Leetcode Eye Patch",
@@ -17,7 +17,7 @@
            "48": "icon48.png" },
   "content_scripts": [
     {
-      "matches": ["http://leetcode.com/*","https://leetcode.com/*"],
+      "matches": ["http://leetcode.com/problemset/*","https://leetcode.com/problemset/*","http://leetcode.com/problems/*","https://leetcode.com/problems/*"],
       "js": ["jquery.js", "jquery-watch.min.js", "background.js"]
     }
   ],
