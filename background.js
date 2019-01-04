@@ -9,20 +9,17 @@ $(document).ready(function () {
 		properties: 'prop_innerHTML',
 		watchChildren: true,
 		callback: function (data, i) {
-			// Hide acceptance
-			$('tbody.reactable-data td:nth-child(5)').each((index, obj) => {
-		  		$(obj).css('opacity', '0');
-			});
-
-			// Hide difficulty
-			$('tbody.reactable-data td:nth-child(6)').each((index, obj) => {
-		  		$(obj).css('opacity', '0');
-			});
-
 			// Hide locked
 			chrome.storage.sync.get('hideLocked', function(response) {
 				if (response.hideLocked) {
 					$('tr i.fa.fa-lock').closest('tr').css('display', 'none')
+				}
+			});
+
+			// Hide Accepted
+			chrome.storage.sync.get('hideAccepted', function(response) {
+				if (response.hideAccepted) {
+					$('tr span.text-success.fa.fa-check').closest('tr').css('display', 'none')
 				}
 			});
 

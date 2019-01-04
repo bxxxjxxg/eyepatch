@@ -1,7 +1,9 @@
 function save_options() {
   var hideLocked = document.getElementById('hide-locked').checked;
+  var hideAccepted = document.getElementById('hide-accepted').checked;
   chrome.storage.sync.set({
-    hideLocked: hideLocked
+    hideLocked: hideLocked,
+    hideAccepted: hideAccepted
   }, function() {
     window.close();
   });
@@ -12,9 +14,11 @@ function save_options() {
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({
-    hideLocked: false
+    hideLocked: false,
+    hideAccepted: false
   }, function(items) {
     document.getElementById('hide-locked').checked = items.hideLocked;
+    document.getElementById('hide-accepted').checked = items.hideAccepted;
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
