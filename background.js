@@ -2,23 +2,28 @@ $(document).ready(function () {
 	var sidebarLoaded = false; // Avoid sidebar to be watched twice
 
 	$.get( "/api/problems/algorithms/", function( data ) {
-		var ac = 0;
-		var total = 0;
+		var acBucket = [0, 0, 0, 0];
+		var totalBucket = [0, 0, 0, 0];
 		data = JSON.parse(data);
 		
 		for (var i in data.stat_status_pairs) {
 			// console.log(JSON.stringify(data.stat_status_pairs[i][j]));
 			if (!data.stat_status_pairs[i].paid_only) {
-				total += 1;
+				totalBucket[data.stat_status_pairs[i].difficulty.level] += 1;
 				if (data.stat_status_pairs[i].status == "ac")
-					ac += 1;
+					acBucket[data.stat_status_pairs[i].difficulty.level] += 1;
 			}
 		}
 
-		console.log("total = " + total + " ac = " + ac);
-		$('span.label.label-primary.round').html('<span>' + ac + '/' + total+ ' Solved</span>');
+		console.log("total = " + totalBucket + " ac = " + acBucket);
+		var ac = acBucket.reduce((a,b)=>a+b);
+		var total = totalBucket.reduce((a,b)=>a+b);
+		$('span.label.label-primary.round').html('<span>' + (total - ac) + ' Todo (' + ac + '/' + total + ' Solved)</span>');
+		$('div#welcome span.label.label-success.round').html('<span>Easy ' + (totalBucket[1] - acBucket[1]) + ' Todo</span>');
+		$('div#welcome span.label.label-warning.round').html('<span>Medium ' + (totalBucket[2] - acBucket[2]) + ' Todo</span>');
+		$('div#welcome span.label.label-danger.round').html('<span>Hard ' + (totalBucket[3] - acBucket[3]) + ' Todo</span>');
 		$('div.col-xs-4.text-primary.text-center').html('<div class="text-500 status">' + (total - ac)+ ' </div><span class="text text-sm status">Todo</span>');
-		$('div.col-xs-4.text-success.text-center').html('<div class="text-500 status">' + ac + '/' + total+ ' </div><span class="text text-sm status">Solved</span>');
+		$('div.col-xs-4.text-success.text-center').html('<div class="text-500 status">' + ac + '/' + total + ' </div><span class="text text-sm status">Solved</span>');
 		//$('spanlabel.label-primary.round').empty();
 		
 	});
